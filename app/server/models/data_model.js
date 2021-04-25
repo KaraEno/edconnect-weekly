@@ -14,8 +14,8 @@ class DataModel {
           if (id === element.id) {
             return element;
         }
-        return null
       }
+      return null
     }
 
     save(obj) {
