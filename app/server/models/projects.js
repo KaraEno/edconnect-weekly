@@ -28,10 +28,9 @@ class Projects extends DataModel {
             this.errors.push(errormsg);
          }
          //test for empty property
-         else if (obj[key] == '' || obj[key]
-         == [] || obj[key] == null){
+         else if (obj[key] == '' || obj[key] == [] || obj[key] == null){
              if (key !== 'authors' && key !== 'tags') {
-                errormsg = key + " should be an array";
+                errormsg = key + " should be empty";
                 this.errors.push(errormsg);  
              }
          }
