@@ -29,8 +29,8 @@ class Users extends DataModel {
             if (email === element.email) {
                 return element;  
               }
-              return null
         }
+        return null;
     }
 
     getByMatricNumber(matricNumber) {
@@ -39,8 +39,8 @@ class Users extends DataModel {
            if (matricNumber === element.matricNumber) {
             return element;
         }
-        return null
        }
+       return null;
     }
 
     validate(obj) {
