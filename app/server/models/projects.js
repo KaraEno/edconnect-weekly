@@ -13,19 +13,19 @@ class Project {
 
 class Projects extends DataModel {
     validate(obj) {
-      this.error = []
+      this.errors = []
       let errormsg;
        
       //test for authors
       if (Array.isArray(obj.authors) == false) {
           errormsg = "Authors should be an array";
-          this.error.push(errormsg)
+          this.errors.push(errormsg)
       }
 
       //test for tags
       if (Array.isArray(obj.tags) == false) {
           errormsg = "Tags should be an array"
-          this.error.push(errormsg)
+          this.errors.push(errormsg)
       }
 
       //test for empty property

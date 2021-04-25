@@ -19,12 +19,8 @@ class User {
 
 class Users extends DataModel {
     authenticate(email, password) {
-      this.data.find(key => {
-        if (email == key.email && password == key.password) {
-          return true;
-        }
-        return false;
-      })
+     let authen = this.data.find((key) => key.email == email && key.password == password) 
+          return authen? true : false
     }
 
     getByEmail(email) {
@@ -48,7 +44,7 @@ class Users extends DataModel {
     }
 
     validate(obj) {
-      this.error = []
+      this.errors = []
       let errormsg;
       let  emptytest,emailtest,mntest,pwtest = false
 

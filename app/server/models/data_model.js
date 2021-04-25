@@ -27,30 +27,24 @@ class DataModel {
     }
 
     update(obj, id) {
-       for (let i = 0; i < this.data.length; i++) {
-           const element = this.data[i];
-           if (id === element.id) {
-            for(const key in object){
-                if (Object.hasOwnProperty.call(obj, key)) {
-                   const element = obj[key];
-                   this.data[index][key] = item; 
-                }
-            }
-            return true;
-        }
-        return null;    
-       }
+      let person = this.data.find(key => key.id === id);
+      if (person) {
+         for (const key in obj) {
+             person[key] = obj[key]
+         }
+         return true;
+      }
+      return false;
     }
 
     delete(id) {
-      for (let i = 0; i < this.data.length; i++) {
-          const element = this.data[i];
-          if (element.id === id) {
-              this.data.splice(i, 1);
-              return true;
-          }
-          return false;
-      }
+     let person = this.data.find(key => key.id == id);
+     let i = this.data.indexOf(person);
+     if (person) {
+         this.data.splice(i, 1)
+         return true;
+     }
+     return false;
     }
 
     // this method will be overriden in the sub classes
