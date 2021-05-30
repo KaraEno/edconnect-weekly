@@ -1,0 +1,90 @@
+
+.nav-bar{
+    display: flex;
+    flex-direction: row;
+    background-color: blue;
+    padding: 5px;
+    color: white;
+}
+
+.left-nav{
+flex-direction: row;
+display: flex;
+align-items: center;
+}
+.search{
+    margin: 5px;
+}
+.right-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+.first{
+    margin: 15px 30px;
+}
+.card-title{
+    color: blue;
+}
+.card{
+margin: 15px 30px;
+}
+.second{
+    color: blue;
+    display: flex;
+}
+.html{
+    margin-right: 10px;
+}
+.css{
+    margin-right: 10px;
+}
+.javascript{
+    margin-right: 20px;
+}
+.all-card{
+    display: flex;
+}
+.footer{
+    text-align: right;
+    background-color: silver;
+    margin-right: 30px;
+    padding: 5px 0;
+}
+.ed-footer{
+    font-weight: bold;
+}
+.login{
+    margin-top: 20px;
+}
+.form-group{
+    margin-right: 10px;
+}
+main{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.ade{
+    background-color: silver;
+}
+.one{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+footer{
+    margin-top: 30px;
+}
+.three{
+    background-color: silver;
+    text-align: center;
+    padding: 7px;
+    border-radius: 3px;
+}
+.four{
+    background-color: silver;
+    padding: 3px;
+}
