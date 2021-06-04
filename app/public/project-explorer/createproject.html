@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,48 +9,51 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <nav class="navbar nav-bar sticky-top ">
         <div class="left-nav">
             <h3 class="navbar-brand">Project Explorer</h3>
-        <div >
-            <form action="" class="form-inline" name="searchForm">
-        <input type="text" class="form-control" placeholder="Search Projects">
-        <button type="submit" class="btn btn-outline-light search">Search</button>
-        <a href="">Submit</a>
-            </form>
-        </div>
+            <div>
+                <form action="" class="form-inline" name="searchForm">
+                    <input type="text" class="form-control" placeholder="Search Projects">
+                    <button type="submit" class="btn btn-outline-light search">Search</button>
+                    <a href="">Submit</a>
+                </form>
+            </div>
         </div>
         <div class="right-nav">
-            <a class="nav-link" href="">Signup</a>
-            <a class="nav-link" href="">Login</a>
-            </div>
-</nav>
-    
+            <a class="nav-link unhide" id="logout" href="index.html" style="display: none;">Logout</a>
+             <span class="nav-link unhide" id="username" style="display: none;"></span>
+             <a class="nav-link hide" id="signup" href="register.html">Signup</a>
+             <a class="nav-link hide" id="login" href="login.html">Login</a>
+         </div>
+    </nav>
+
     <form action="" name="submitProject" class="mx-auto w-75">
         <h4 class="mt-5">Submit Project</h4>
-     <label for="name" class="form-label"> Project Name: </label><br>
-<div class="form-group">
-     <input type="text" name="name" class="form-control"><br>
-</div>
+        <label for="name" class="form-label"> Project Name: </label><br>
+        <div class="form-group">
+            <input type="text" name="name" class="form-control"><br>
+        </div>
 
-     <label for="abstract" class="form-label"> Project Abstract: </label><br>
+        <label for="abstract" class="form-label"> Project Abstract: </label><br>
 
-     <div class="form-group"> 
-     <textarea type="text" name="abstract" class="form-control"></textarea><br>
-     </div>
+        <div class="form-group">
+            <textarea type="text" name="abstract" class="form-control"></textarea><br>
+        </div>
 
-    <label for="authors"> Authors: </label><br>
+        <label for="authors"> Authors: </label><br>
 
-    <div class="form-group"> 
-    <input type="text" name="authors" class="form-control"><br>
-    </div>
+        <div class="form-group">
+            <input type="text" name="authors" class="form-control"><br>
+        </div>
 
-    <div class="form-group"> 
-     <label for=""> Tag(s): </label><br>
-     <input type="text" name="tags" class="form-control"><br>
-    </div>
-       <button type="submit" class="btn btn-primary">Continue</button>
+        <div class="form-group">
+            <label for=""> Tag(s): </label><br>
+            <input type="text" name="tags" class="form-control"><br>
+        </div>
+        <button type="submit" class="btn btn-primary">Continue</button>
     </form>
 
     <footer>
@@ -59,4 +63,5 @@
     </footer>
     <script src="js/app.js"></script>
 </body>
+
 </html>

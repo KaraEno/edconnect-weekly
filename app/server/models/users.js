@@ -52,7 +52,7 @@ class Users extends DataModel {
        Object.keys(obj).forEach(key => {
         if (obj[key] == '') {
           emptytest = true;
-            errormsg = `(${key} cannot be empty)`
+            errormsg = `${key} cannot be empty`
             this.errors.push(errormsg)
         }
     })  
@@ -68,7 +68,7 @@ class Users extends DataModel {
      this.data.forEach(key => {
        if (obj.matricNumber == key.matricNumber) {
          mntest = true;
-         errormsg = `(A user with ${obj.matricNumber} already exist)`;
+         errormsg = `A user with ${obj.matricNumber} already exist`;
          this.errors.push(errormsg)
        }
      })

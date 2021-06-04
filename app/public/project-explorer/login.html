@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,36 +9,41 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <nav class="navbar nav-bar sticky-top ">
         <div class="left-nav">
             <h3 class="navbar-brand">Project Explorer</h3>
-        <div >
-            <form action="" class="form-inline" name="searchForm">
-        <input type="text" class="form-control" placeholder="Search Projects">
-        <button type="submit" class="btn btn-outline-light search">Search</button>
-        <a href="">Submit</a>
-            </form>
-        </div>
+            <div>
+                <form action="" class="form-inline" name="searchForm">
+                    <input type="text" class="form-control" placeholder="Search Projects">
+                    <button type="submit" class="btn btn-outline-light search">Search</button>
+                    <a href="">Submit</a>
+                </form>
+            </div>
         </div>
         <div class="right-nav">
-            <a class="nav-link" href="">Signup</a>
-            <a class="nav-link" href="">Login</a>
-            </div>
-</nav>
-<div class="mx-auto w-75 login">
-    <h1>Login</h1>
-    <form class="form-group" action="">
-       <label for="email">Email address: </label><input type="email" class="form-control" name="email"><br>
-      <label for="password"> Password: </label><input type="password" class="form-control" name="password"><br>
-        <button class="btn btn-primary">Login</button>
-    </form>
-</div>
-<footer>
-    <div class="footer bg-light">
-        <p>Project Explorer @ 2020 . <span class="ed-footer">Edconnect</span></p>
+            <a class="nav-link unhide" id="logout" href="index.html" style="display: none;">Logout</a>
+             <span class="nav-link unhide" id="username" style="display: none;"></span>
+             <a class="nav-link hide" id="signup" href="register.html">Signup</a>
+             <a class="nav-link hide" id="login" href="login.html">Login</a>
+         </div>
+    </nav>
+    <div class="mx-auto w-75 login">
+        <h1>Login</h1>
+        <div class="alert alert-danger"></div>
+        <form class="form-group" id="loginForm" action="">
+            <label for="email">Email address: </label><input type="email" class="form-control" name="email"><br>
+            <label for="password"> Password: </label><input type="password" class="form-control" name="password"><br>
+            <button class="btn btn-primary">Login</button>
+        </form>
     </div>
-</footer>
-<script src="js/app.js"></script>
+    <footer>
+        <div class="footer bg-light">
+            <p>Project Explorer @ 2020 . <span class="ed-footer">Edconnect</span></p>
+        </div>
+    </footer>
+    <script src="js/app.js"></script>
 </body>
+
 </html>
