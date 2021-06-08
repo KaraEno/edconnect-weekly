@@ -1,5 +1,4 @@
-const path = window.location.href
-if (path.includes("register.html")) {
+if (window.location.href.includes("register.html")) {
     window.onload = function () {
         //Fetching programs
         let programs = document.getElementById("programs")
@@ -9,10 +8,7 @@ if (path.includes("register.html")) {
                 'Content-Type': 'application/json'
             }
         })
-            .then(response => {
-                response.json()
-                console
-            })
+            .then(response => response.json())
             .then(response => {
                 for (let i = 0; i < response.length; i++) {
                     let pg = document.createElement("option")
@@ -153,17 +149,20 @@ if (document.cookie) {
 }
 
 // Login page
-let loginForm = document.getElementById("loginForm")
-const loginAlert = document.querySelector(".alert-danger")
-loginAlert.style.display = "none";
-if (path.includes("login.html")) {
+
+if (window.location.href.includes("login.html")) {
+
+    let loginForm = document.getElementById("loginForm")
+    const loginAlert = document.querySelector(".alert-danger")
+    loginAlert.style.display = "none";
     window.onload = function () {
-        let loginData = {
-            email: document.getElementsByName("email")[0],
-            password: document.getElementsByName("password")[0]
-        }
         function sendPost(event) {
             event.preventDefault()
+            let loginData = {
+                email: document.getElementsByName("email")[0].value,
+                password: document.getElementsByName("password")[0].value
+            }
+
             fetch('/api/login', {
                 method: 'POST',
                 headers: {
@@ -171,16 +170,17 @@ if (path.includes("login.html")) {
                 },
                 body: JSON.stringify(loginData)
             })
-                .then(response => response.json())
+                .then(result => result.json())
                 .then(result => {
                     console.log(result)
                     if (result.status === "ok") {
-                        document.cookie = `uid = ${result.data.id}; expires=Wed, 30 June 2021 12:00:00 UTC"; path=/`;
+                        console.log(result.data)
+                        document.cookie = `uid = ${result.data.id}; domain=; path=/`;
 
                         window.location.href = "index.html"
                     }
                     else if (result.status !== "ok") {
-                        loginAlert.innerHTML = result.errors;
+                        loginAlert.innerHTML = "Invalid email/password";
                         loginAlert.style.display = "block"
                     }
                 })
@@ -190,5 +190,138 @@ if (path.includes("login.html")) {
         }
         loginForm.addEventListener("submit", sendPost)
     }
+}
 
+
+//create project
+
+if (window.location.href.includes("createproject.html")) {
+    window.onload = function () {
+        //check if cookie id exist
+        let lookupCookie = document.cookie.split(";").some((item) => item.trim().startsWith('uid='));
+        if (!lookupCookie) {
+            window.location.href = "login.html"
+        }
+        //create and post projects
+        let createProjectForm = document.getElementById("createProjectForm")
+        const CPAlert = document.querySelector(".alert-danger")
+        CPAlert.style.display = "none";
+        function transferPost(event) {
+            event.preventDefault()
+            let CPData = {
+                name: document.getElementsByName("name")[0].value,
+                abstract: document.getElementsByName("abstract")[0].value,
+                authors: (document.getElementsByName("authors")[0].value).split(","),
+                tags: (document.getElementsByName("tags")[0].value).split(",")
+            }
+            console.log(CPData)
+            fetch('/api/projects', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(CPData)
+            })
+                .then(response => response.json())
+                .then(result => {
+                    console.log(result.data)
+                    if (result.status === "ok") {
+                        console.log("hi")
+                        window.location.href = "index.html"
+                    }
+                    else if (result.status !== "ok") {
+                        CPAlert.style.display = "block"
+                        let CPerrs = response.errors.toString().replaceAll(",", "<br>")
+                        CPAlert.innerHTML = CPerrs;
+                    }
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        }
+        createProjectForm.addEventListener("submit", transferPost)
+    }
+}
+
+if (window.location.href.includes('index.html')) {
+    window.onload = function () {
+        let showcase = document.querySelector('.showcase');
+        let projectTitle = document.querySelectorAll('.card-title');
+        let authors = document.querySelectorAll('.card-subtitle');
+        let abstract = document.querySelectorAll('.card-text');
+        let tags = document.querySelectorAll('.second');
+
+
+
+        fetch('/api/projects', {
+            method: 'GET',
+            header: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log(result)
+                for (let i = 0; i < 4; i++) {
+                    projectTitle[i].innerHTML = `<a href = "viewproject.html?id=${result[i].id}">${result[i].name}</a>`
+                    authors[i].innerHTML = `${result[i].authors}`
+                    abstract[i].innerHTML = `${result[i].abstract}`
+                    tags[i].innerHTML = `${result[i].tags}`
+
+                }
+                showcase.style.visibility = 'visible'
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+}
+// view project page 
+if (window.location.href.includes('viewproject.html')) {
+    window.onload = function () {
+        let params = new URLSearchParams(document.location.search.substring(1));
+        let newId = params.get("id")
+        console.log(newId)
+        let pName = document.getElementById('project_name')
+        let pAbstract = document.getElementById('project_abstract')
+        let pAuthors = document.getElementById('project_authors')
+        let pTags = document.getElementById('project_tags')
+
+        fetch(`/api/projects/${newId}`, {
+            method: 'GET',
+            header: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log(result)
+                pName.innerHTML = result.name;
+                pAbstract.innerHTML = result.abstract;
+                // pAuthors.innerHTML = result.authors;
+                pTags.innerHTML = result.tags;
+                pAuthors.innerHTML = ''
+                for (let i = 0; i < result.authors.length; i++) {
+                    let authorsPara = document.createElement('p')
+                    authorsPara.innerHTML = `${result.authors[i]}`
+                    //   authorsPara.className = 'card-text'
+                    pAuthors.appendChild(authorsPara)
+                }
+
+                fetch(`/api/users/${result.createdBy}`, {
+                    method: 'GET',
+                    header: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => response.json())
+                    .then(result => {
+                        console.log(result)
+                        let projectAuthor = `${result.firstname} ${result.lastname}`;
+                        document.getElementById("project_author").textContent = projectAuthor;
+                    })
+            }).catch(error => {
+                console.log(error)
+            })
+    }
 }

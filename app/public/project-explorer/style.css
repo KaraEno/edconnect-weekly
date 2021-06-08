@@ -30,6 +30,11 @@ a{
 .card-title{
     color: blue;
 }
+
+.card-title a {
+    color: blue;
+    text-decoration: none;
+}
 .card{
 margin: 15px 30px;
 }

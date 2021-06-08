@@ -24,15 +24,15 @@
         </div>
         <div class="right-nav">
             <a class="nav-link unhide" id="logout" href="index.html" style="display: none;">Logout</a>
-             <span class="nav-link unhide" id="username" style="display: none;"></span>
-             <a class="nav-link hide" id="signup" href="register.html">Signup</a>
-             <a class="nav-link hide" id="login" href="login.html">Login</a>
-         </div>
+            <span class="nav-link unhide" id="username" style="display: none;"></span>
+            <a class="nav-link hide" id="signup" href="register.html">Signup</a>
+            <a class="nav-link hide" id="login" href="login.html">Login</a>
+        </div>
     </nav>
 
     <div class="container">
         <section>
-            <h3 class="mt-3">Project 1</h3>
+            <h3 class="mt-3" id="project_name">Project 1</h3>
             <div class="four bg-light">
                 <div class="row">
                     <div class="col">Created By:</div>
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col">Ade Chris</div>
+                    <div class="col" id="project_author">Ade Chris</div>
                     <div class="col">2020-08-30</div>
                     <div class="col">2020-08-30</div>
                     <div class="col"></div>
@@ -67,15 +67,18 @@
 
         <div class="row">
             <div class="col">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo itaque dolore veritatis labore
+                <p id="project_abstract">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo itaque dolore
+                    veritatis labore
                     excepturi est maxime hic nam, rerum eveniet iste illum saepe dolor voluptatum, aliquid nulla vero
                     reiciendis nostrum.</p>
             </div>
             <div class="col">
                 <div class="card">
                     <div class="card-header">Author(s)</div>
-                    <p class="card-text px-3 mt-3">Ade Chris</p>
-                    <p class="card-footer" style="color: blue;">#web
+                    <div>
+                        <p class="card-text px-3 mt-3" id="project_authors">Ade Chris</p>
+                    </div>
+                    <p class="card-footer" style="color: blue;" id="project_tags">#web
                     </p>
                 </div>
             </div>
