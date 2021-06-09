@@ -2,6 +2,7 @@ if (window.location.href.includes("register.html")) {
     window.onload = function () {
         //Fetching programs
         let programs = document.getElementById("programs")
+        programs.innerHTML = ''
         fetch('/api/programs', {
             method: 'GET',
             header: {
@@ -23,6 +24,7 @@ if (window.location.href.includes("register.html")) {
 
         //Fetching graduationYears
         let graduationYear = document.getElementById("graduationYears")
+        graduationYear.innerHTML = ''
         fetch('/api/graduationYears', {
             method: 'GET',
             header: {
